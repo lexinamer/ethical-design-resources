@@ -1,9 +1,9 @@
 body {
   max-width: 1400px;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   line-height: 1.6em;
-  padding: 50px;
+  padding: 35px 50px 50px;
 }
 
 .container {
@@ -48,9 +48,7 @@ nav {
   margin-bottom: 20px;
   font-size: 19px;
   font-weight: 900;
-}
-
-.categories a {
+  letter-spacing: 0.3px;
 }
 
 .card-image {
@@ -75,13 +73,13 @@ nav {
   line-height: 1.4em;
 }
 
-.category {
-  border-radius: 10px;
+.card-category {
   font-size: 13px;
   border-radius: 15px;
-  background: #e4e4e4;
   padding: 5px 15px;
-  font-weight: 900;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.4px;
 }
 
 .resources {
