@@ -30,6 +30,11 @@ nav {
   transition: all .3s;
 }
 
+.card a {
+  display: inline-block;
+  height: 100%;
+}
+
 .card:hover {
   transform: scale(1.025);
 }
@@ -66,6 +71,7 @@ nav {
 .card-title {
   font-size: 16px;
   font-weight: 700;
+  margin-bottom: 0
 }
 
 .card-desc {
@@ -74,10 +80,10 @@ nav {
 }
 
 .card-category {
-  font-size: 13px;
+  font-size: 12px;
   border-radius: 15px;
   padding: 5px 15px;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
   letter-spacing: 0.4px;
 }
