@@ -11,10 +11,12 @@ function init() {
     simpleSheet: true })
 };
 
+
 // Process data from gSheet
 function processData(data) {
-  for (let i = 0; i < data.length; i++) {
+  data.reverse();
 
+  for (let i = 0; i < data.length; i++) {
     // Store data as variables
     var title = data[i].Title,
         desc = data[i].Description,
