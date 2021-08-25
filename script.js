@@ -1,37 +1,62 @@
-// Initialize Tabletop to get gSheet data
-let publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1tN9szUpfnbWsOBGgKgzfMgF87--zVS_4IhzX2blkhBE/pubhtml';
 var catsArray = [];
 var colors = ['#F479A3', '#E91F63', '#DE0F00', '#9D27B0', '#4E00D8', '#001FE0' ,'#2197F3', '#78AEFF', '#03BBD4', '#009688', '#4CAF50', '#076B0B', '#ABB92D', '#DAC406', '#FFC008', '#FF9800', '#FE470E', '#C60E00', '#816464'];
 var index = 0;
 
 
-function init() {
-  Tabletop.init({ key: publicSpreadsheetUrl,
-    callback: processData,
-    simpleSheet: true })
-};
+// var url = 'https://sheets.googleapis.com/v4/spreadsheets/' +
+//            '2PACX-1vTBlUdAPpIyAYeV7tvnEW3Jyne3Gj2k0g546qAydhfBkOH3vv8RaffWQjDsgnZu6xft1EDgxK67g7Gu' + '/values/' + 'Version1' +
+//            '?alt=json&key=' + api_key;
+// ($.getJSON(url, 'callback=?')).success(function(data) {
+//   processData
+// };
+
+$(document).ready(function() {
+  $.getJSON("resources.json", function(data){
+      processData(data);
+  }).fail(function(){
+      console.log("An error has occurred.");
+  });
+});
 
 
-// Process data from gSheet
+// Process data from json file
 function processData(data) {
-  data.reverse();
+  for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+        console.log(data[key].Title);
 
-  for (let i = 0; i < data.length; i++) {
-    // Store data as variables
-    var title = data[i].Title,
-        desc = data[i].Description,
-        image = data[i].Image,
-        cat = data[i].Category,
-        link = data[i].Link;
+        var title = data[key].Title,
+            desc = data[key].Description,
+            image = data[key].Image,
+            cat = data[key].Category,
+            link = data[key].Link;
 
-    // If category is new, push to array
-    if(catsArray.indexOf(cat) === -1){
-      catsArray.push(cat);
+        // If category is new, push to array
+        if(catsArray.indexOf(cat) === -1){
+          catsArray.push(cat);
+        }
+
+        // Send data to cards function
+        createCards(title,desc,image,cat,link);
     }
-
-    // Send data to cards function
-    createCards(title,desc,image,cat,link);
-  };
+  }
+  // for (let i = 0; i < data.length; i++) {
+  //   console.log(data[i]);
+  //   // Store data as variables
+  //   var title = data[i].Title,
+  //       desc = data[i].Description,
+  //       image = data[i].Image,
+  //       cat = data[i].Category,
+  //       link = data[i].Link;
+  //
+  //   // If category is new, push to array
+  //   if(catsArray.indexOf(cat) === -1){
+  //     catsArray.push(cat);
+  //   }
+  //
+  //   // Send data to cards function
+  //   createCards(title,desc,image,cat,link);
+  // };
 
   // Send array to filter function
   createFilter();
@@ -109,5 +134,3 @@ function matchColor() {
     })
   });
 }
-
-init();
