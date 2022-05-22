@@ -28,7 +28,7 @@ function processData(data) {
             link = data[key][6];
 
         // Trim the description
-          desc= desc.split(" ").splice(0,20).join(" ");
+          desc= desc.split(" ").splice(0,25).join(" ");
 
         // If category is new, push to array
         if(catsArray.indexOf(cat) === -1){
@@ -51,18 +51,18 @@ function processData(data) {
 function createCards(year,title,authors,publication,cat,link,desc) {
   var year = (year == "") ? "" : year;
   var desc = (desc == "") ? "" : desc + '...';
-  var authors = (authors == "") ? "" : 'By: ' + authors;
-  var publication = (publication == "") ? "" : 'Publication: ' + publication;
+  var authors = (authors == "") ? "" : '<strong>By:</strong> ' + authors;
+  var publication = (publication == "") ? "" : '<strong>Publication:</strong> ' + publication;
 
   var card =
     `<div class="card" data-category-type="${cat}">
         <a href="${link}" target="_blank">
           <div class="card-header">
             <span class="card-category">${cat}</span>
+            <p class="card-date">${year}</p>
           </div>
           <div class="card-content">
             <p class="card-title">${title}</p>
-            <p class="card-date">${year}</p>
             <p class="card-authors">${authors}</p>
             <p class="card-publication">${publication}</p>
             <p class="card-desc">${desc}</p>
