@@ -182,6 +182,10 @@ a {
   .container {
     flex-direction: column;
   }
+  
+  .btn {
+  width: 150px
+  }
 
   .copyright {
     display: none;
