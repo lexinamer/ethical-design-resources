@@ -15,7 +15,7 @@ $.getJSON( url, function( data ) {
 // Primary Function for JSON
 function processData(data) {
   delete data[0];
-  data.sort((a, b) => (a[0] > b[0]) ? -1 : 1)
+  // data.sort((a, b) => (a[0] > b[0]) ? -1 : 1)
 
   for (var key in data) {
     if (data.hasOwnProperty(key)) {
